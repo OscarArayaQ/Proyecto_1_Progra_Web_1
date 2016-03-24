@@ -12,6 +12,8 @@
 */
 Route::get('prueba/correo','Prueba@sendEmailReminder');
 Route::resource('prueba','Prueba');
+Route::resource('user','UserController');
+
 
 Route::get('test', function()
 {

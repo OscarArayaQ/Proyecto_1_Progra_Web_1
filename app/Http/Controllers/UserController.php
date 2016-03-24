@@ -1,34 +1,14 @@
-<?php namespace App\Http\Controllers;
+<?php
 
+namespace App\Http\Controllers;
 
-use Mail;
-use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
-class Prueba extends Controller
+class UserController extends Controller
 {
-
- /**
-     * Send an e-mail reminder to the user.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function sendEmailReminder(Request $request)
-    {
-        $user = (object) array('name' => 'Oscar', 'email' => 'arayaos1713@gmail.com' );
-
-        Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-            $m->from('hello@app.com', 'OscarMail');
-
-            $m->to($user->email, $user->name)->subject('Activacion de la Cuenta');
-        });
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +16,7 @@ class Prueba extends Controller
      */
     public function index()
     {
-        return('Hola, este es el index');
+        return view('user.index');
     }
 
     /**
@@ -44,9 +24,10 @@ class Prueba extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()|
+    public function create()
     {
         //
+        return view('user.create');
     }
 
     /**
