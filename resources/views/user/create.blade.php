@@ -19,15 +19,18 @@
 			<h2> REGISTRO DE USUARIO </h2>					
 		</div>
 	</div>
-	<form id = "new_usuario" action="creacion nuevo trabajo.html" method="POST">
+	<form id = "new_usuario" action="/user" method="POST">
+
+		<input name="_token" hidden value="{!! csrf_token() !!}" />
+
 		<h3> Nombre de Usuario o correo electronico </h3>
-		<input id="Usuario" type="text" list="invoicess" placeholder="Escriba su nombre de usuario o correo">
+		<input id="usuario" type="text" name="user_name" placeholder="Escriba su nombre de usuario o correo">
 		<h3> Contraseña </h3>
-		<input id="contrasenna" type="password" name="Trabajo" placeholder="Escriba su contraseña"/>
+		<input id="contrasenna" type="password" name="contrasenna" placeholder="Escriba su contraseña"/>
 		<h3> Repetir contraseña </h3>
-		<input id="Rcontrasenna" type="password" name="fecha" placeholder="Repita su contraseña"/>
-		<input id="boton_registro" value="Guardar" type="button" onclick="crear_usuario()">
-		<a id = "boton_registro" href="Login.html"> Cancelar </a>
+		<input id="Rcontrasenna" type="password" name="contrasenna2" placeholder="Repita su contraseña"/>
+		<input id="boton_registro" value="Guardar" type="submit">
+		<a id = "boton_registro"> Cancelar </a>
 	</form>
 </div>	
 @endsection

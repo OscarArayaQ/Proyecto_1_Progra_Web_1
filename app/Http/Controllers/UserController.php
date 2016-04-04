@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\UserModel;
 use App\Http\Controllers\Controller;
+use DB;
 
 class UserController extends Controller
 {
@@ -16,10 +18,11 @@ class UserController extends Controller
      */
     public function index()
     {
+        //return "hola";
         return view('user.index');
     }
 
-    /**
+    /* *
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,7 +41,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request["user_name"];
+        DB::table('usuarios')->insert(
+            array('nombre','contrasenna' => \Input::get('user_name'),'contrasenna'));
+        return redirect('user');
     }
 
     /**

@@ -19,11 +19,10 @@ class Prueba extends Controller
      */
     public function sendEmailReminder(Request $request)
     {
-        $user = (object) array('name' => 'Oscar', 'email' => 'arayaos1713@gmail.com' );
+        $user = (object) array('name' => 'Oscar', 'email' => 'arayaos@icloud.com' );
 
         Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-            $m->from('hello@app.com', 'OscarMail');
-
+         
             $m->to($user->email, $user->name)->subject('Activacion de la Cuenta');
         });
     }
@@ -44,7 +43,7 @@ class Prueba extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()|
+    public function create()
     {
         //
     }
