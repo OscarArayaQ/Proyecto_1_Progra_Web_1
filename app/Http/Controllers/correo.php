@@ -1,16 +1,33 @@
-<?php
+<?php namespace App\Http\Controllers;
 
-namespace App\Http\Controllers;
 
+use Mail;
+use App\User;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\UserModel;
 use App\Http\Controllers\Controller;
-use DB;
+use App\Http\Requests;
 
-class UserController extends Controller
+class correo extends Controller
 {
+
+    /**
+     * Send an e-mail reminder to the user.
+     *
+     * @param  Request  $request
+     * @param  int  $id
+     * @return Response
+     */
+    public function sendEmailReminder(Request $request)
+    {
+        $user = (object) array('name' => 'Oscar', 'email' => 'arayaos@icloud.com' );
+
+        Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+
+            $m->to($user->email, $user->name)->subject('Activacion de la Cuenta');
+        });
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -18,11 +35,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //return "hola";
-        return view('user.index');
+        return('Hola, este es el index');
     }
 
-    /* *
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -30,7 +46,6 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('user.create');
     }
 
     /**
@@ -41,10 +56,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request["user_name"];
-        DB::table('usuarios')->insert(
-            array('nombre' => \Input::get('user_name'),'contrasenna' => \Input::get('contrasenna')));
-        return redirect('user');
+        //
     }
 
     /**
