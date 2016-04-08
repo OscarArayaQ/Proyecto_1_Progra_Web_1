@@ -23,10 +23,12 @@
 
 		<input name="_token" hidden value="{!! csrf_token() !!}" />
 
-		<h3> Nombre de Usuario o correo electronico </h3>
-		<input id="usuario" type="text" name="user_name" placeholder="Escriba su nombre de usuario o correo">
+		<h3> Nombre de Usuario </h3>
+		<input id="usuario" type="text" name="user_name" placeholder="Escriba su nombre de usuario"/>
 		<h3> Contraseña </h3>
 		<input id="contrasenna" type="password" name="contrasenna" placeholder="Escriba su contraseña"/>
+		<h3> Correo Electronico </h3>
+		<input id="correo" type="email" name="correo" placeholder="Escriba su correo">
 		<h3> Repetir contraseña </h3>
 		<input id="Rcontrasenna" type="password" name="contrasenna2" placeholder="Repita su contraseña"/>
 		<input id="boton_registro" value="Guardar" type="submit">

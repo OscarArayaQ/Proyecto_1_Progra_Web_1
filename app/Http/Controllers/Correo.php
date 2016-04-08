@@ -6,29 +6,31 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Mail;
+use App\User;
 
-class correo extends Controller
+class Correo extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function sendEmailReminder(Request $request)
+    public function sendEmailReminder($user_name,$correo)
     {
         $user = (object) array('name' => 'Oscar', 'email' => 'arayaos@icloud.com' );
 
         Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+            
+            //ocupo el id del usuario
+            //localhost:8000/user/verificar/id_usuario
 
             $m->to($user->email, $user->name)->subject('Activacion de la Cuenta');
         });
     }
-
     public function index()
     {
-
-        return('Hola, este es el index');
+        //
     }
 
     /**

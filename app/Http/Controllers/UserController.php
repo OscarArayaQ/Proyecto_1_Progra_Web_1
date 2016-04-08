@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\UserModel;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Http\Controllers\Correo;
 
 class UserController extends Controller
 {
@@ -16,6 +17,8 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public $mysql;
     public function index()
     {
         //return "hola";
@@ -41,11 +44,32 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request["user_name"];
-        DB::table('usuarios')->insert(
-            array('nombre' => \Input::get('user_name'),'contrasenna' => \Input::get('contrasenna')));
-        return redirect('user');
+
+        try {
+            $cifrado = UserModel::contrasenna_cifrada(\Input::get('contrasenna'));
+            DB::table('usuarios')->insert(
+                array('nombre' => \Input::get('user_name'), 'contrasenna' => $cifrado, 'correo' => \Input::get('correo')));
+
+            $this->Correo = new Correo();
+            $this->Correo->sendEmailReminder(\Input::get('user_name'),\Input::get('correo'));
+
+            return "se mando el correo";
+            //return redirect('user');
+            
+        }
+        catch (\Exception $e)
+        {
+
+            
+        }
     }
+
+    public function verificar_usuario(Request $request)
+    {
+
+    }
+
+
 
     /**
      * Display the specified resource.
