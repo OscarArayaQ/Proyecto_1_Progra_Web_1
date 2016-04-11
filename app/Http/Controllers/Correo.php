@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Mail;
 use App\User;
+use DB;
 
 class Correo extends Controller
 {
@@ -30,7 +31,7 @@ class Correo extends Controller
     }
     public function index()
     {
-        //
+        return view("correo.index");
     }
 
     /**
@@ -40,7 +41,7 @@ class Correo extends Controller
      */
     public function create()
     {
-        //
+        return view("correo.crear");
     }
 
     /**
@@ -51,7 +52,19 @@ class Correo extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $destinatarios = explode(",",\Input::get('correo'));
+            return $destinatarios;
+              DB::table('correo')->insert(
+                array('asunto' => \Input::get('nuevo'),'contenido' =>\Input::get('descripcion')));
+
+            return view("correo.crear");
+            }
+        catch (\Exception $e)
+        {
+
+
+        }
     }
 
     /**

@@ -12,7 +12,6 @@
 */
 Route::get('prueba/correo','Prueba@sendEmailReminder');
 //Route::post('user/{id}/confirmar_correo',UserController@verificar_usuario);
-//Route::resource('prueba','Prueba');
 Route::resource('correo','Correo');
 
 Route::resource('user','UserController');
