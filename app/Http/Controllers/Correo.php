@@ -17,18 +17,19 @@ class Correo extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function sendEmailReminder($user_name,$correo)
+    public function sendEmailReminder($user_name, $correo)
     {
-        $user = (object) array('name' => 'Oscar', 'email' => 'arayaos@icloud.com' );
+        $user = (object)array('name' => 'Oscar', 'email' => 'arayaos@icloud.com');
 
         Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-            
+
             //ocupo el id del usuario
             //localhost:8000/user/verificar/id_usuario
 
             $m->to($user->email, $user->name)->subject('Activacion de la Cuenta');
         });
     }
+
     public function index()
     {
         return view("correo.index");
@@ -47,30 +48,31 @@ class Correo extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         try {
-            $destinatarios = explode(",",\Input::get('correo'));
-            return $destinatarios;
-              DB::table('correo')->insert(
-                array('asunto' => \Input::get('nuevo'),'contenido' =>\Input::get('descripcion')));
+            $destinatarios = explode(",", \Input::get('correo'));
 
-            return view("correo.crear");
+            $id_correo = DB::table('correo')->insertGetId(
+                array('asunto' => \Input::get('nuevo'), 'contenido' => \Input::get('descripcion')));
+
+            foreach ($destinatarios as $valor) {
+                DB::table('destinatarios')->insert(
+                    array('id_correo' => $id_correo, 'correo_destinatario' => $valor));
             }
-        catch (\Exception $e)
-        {
-
-
+            return view("correo.crear");
+        } catch (\Exception $e) {
+            print_r($e);
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,7 +83,7 @@ class Correo extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -92,8 +94,8 @@ class Correo extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -104,7 +106,7 @@ class Correo extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
