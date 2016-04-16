@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Mail;
-use App\User;
+use App\CorreoModel;
 use DB;
 
 class Correo extends Controller
@@ -67,6 +67,18 @@ class Correo extends Controller
         } catch (\Exception $e) {
             print_r($e);
         }
+    }
+    public function get_correo_salida()
+    {
+         return CorreoModel::select_correos_salida();
+    }
+    public function get_correo_enviado()
+    {
+        return CorreoModel::select_correos_enviado();
+    }
+    public function get_correo_borrador()
+    {
+        return CorreoModel::select_correos_borrador();
     }
 
     /**

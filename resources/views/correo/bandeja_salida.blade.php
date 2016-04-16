@@ -1,23 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
+
     <link rel="Stylesheet" href="style.css" type="text/css">
     <script type="text/javascript" src="login.js"></script>
-    <title>Bandeja de Salida</title>
-
-</head>
 
 <body>
-<header id="header">
 
-    <div id="usuario">
-        <a id="New_usuario" href="registro.html" style="margin: 9%; color: white">REGISTRO</a>
-        <a id="volver_login" href="Login.html" title = "Devolverse a iniciar sesion"> <IMG src="imagenes/devolver.png" whidth="50" height="50"> </a>
-        <a id="Hi_user"></a>
-
-    </div>
-</header>
 <div class = "contenedor_general">
 
     <div class="opciones">
@@ -57,4 +43,3 @@
     });
 </script>
 </body>
-</html>
