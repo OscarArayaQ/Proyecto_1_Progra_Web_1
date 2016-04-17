@@ -68,14 +68,18 @@ class Correo extends Controller
             print_r($e);
         }
     }
+
     public function get_correo_salida()
     {
-         return CorreoModel::select_correos_salida();
+        $correos = CorreoModel::select_correos_salida();
+        return view("correo.bandeja_salida", compact('correos'));
     }
+
     public function get_correo_enviado()
     {
         return CorreoModel::select_correos_enviado();
     }
+
     public function get_correo_borrador()
     {
         return CorreoModel::select_correos_borrador();
@@ -112,7 +116,8 @@ class Correo extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('correo')->update(
+            array('asunto' => \Input::get('nuevo'), 'contenido' => \Input::get('descripcion')));
     }
 
     /**
