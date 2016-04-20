@@ -7,4 +7,28 @@
 .form {
     box-shadow: 0 0 30px black;
     padding: 10%;
+    background-color: #f60;
+}
+.register{
+    margin-top: 3%;
+    width: 133%;
+    margin-left: 1%;
+
+}
+
+.form_register{
+    box-shadow: 0 0 30px black;
+    padding: 10%;
+    background-color: #f60;
+}
+.form-control_p {
+
+    width: 40%;
+    height: 70px;
+    margin: 0% 20% 0% -7%;
+    padding: 10px 60px;
+    font-size: 17px;
+    line-height: 1.42857143;
+    color: #555;
+
 }

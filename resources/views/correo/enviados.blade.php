@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <link rel="Stylesheet" href="style.css" type="text/css">
-    <script type="text/javascript" src="login.js"></script>
-    <title>Bandeja de Salida</title>
 
-</head>
-
-<body>
 <header id="header">
 
     <div id="usuario">
@@ -49,12 +39,4 @@
     </div>
 
 </div>
-<script src="vendor/jquery.js"></script>
-<script>
-    $(document).ready(function(){
-        validarNewUser();
-        cargarTablaEnviado();
-    });
-</script>
-</body>
-</html>
+>

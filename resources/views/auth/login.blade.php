@@ -16,7 +16,7 @@
                     <label><input type="checkbox" name="remember">Remember Me</label>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
                 </div>
             </form>
         </div>
