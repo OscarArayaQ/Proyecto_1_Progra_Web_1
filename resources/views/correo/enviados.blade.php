@@ -1,42 +1,39 @@
+@extends('layouts.master')
+@section('content')
 
-<header id="header">
-
-    <div id="usuario">
-        <a id="New_usuario" href="registro.html" style="margin: 9%; color: white">REGISTRO</a>
-        <a id="volver_login" href="Bandeja de Salida.html" title = "Devolverse a iniciar sesion"> <IMG src="imagenes/devolver.png" whidth="50" height="50"> </a>
-        <a id="Hi_user"></a>
-
-    </div>
-</header>
-<div class = "contenedor_general">
-
-    <div class="opciones">
-        <ul>
-            <li><a id="boton" href="Bandeja de Salida.html"> SALIDA </a></li>
-            <li><a id="boton_especial" href="Enviados.html"> ENVIADOS </a></li>
-            <li><a id= "boton" href="Correo Nuevo.html" title = "Nuevo Correo"> NUEVO </a></li>
-        </ul>
-    </div>
-
-    <div class = "minicontenedor">
-
-        <div id= "descripcion">
-            <h2> BANDEJA DE ENVIADOS </h2>
-            <h4 id="mensaje" style="display: none;">Se guardó correctamente</h4>
-
-            <table id="tablaEnviado">
-                <thead>
-                <th>correo</th>
-                <th>asunto</th>
-                <th>action</th>
-                <th>action</th>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
+    <div class="contenedor_general">
+        <div class="opciones">
+            <ul>
+                <li><a id="boton_especial" href="Bandeja de Salida.html"> SALIDA </a></li>
+                <li><a id="boton" href="Enviados.html"> ENVIADOS </a></li>
+                <li><a id="boton" href="Correo Nuevo.html" title="Nuevo Correo"> NUEVO </a></li>
+            </ul>
+        </div>
+        <div class="minicontenedor">
+            <div id="descripcion">
+                <h2> BANDEJA DE ENVIADOS </h2>
+                <h4 id="mensaje" style="display: none;">Se guardó correctamente</h4>
+                <table id="tablaSalida">
+                    <thead>
+                    <th>destinatario</th>
+                    <th>asunto</th>
+                    <th>contenido</th>
+                    </thead>
+                    <tbody>
+                    @forelse($correos as $correo)
+                        <tr>
+                            <td>{{$correo->asunto}}</td>
+                            <td>{{$correo->contenido}}</td>
+                            <td>{{$correo->contenido}}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td>NO HAY CORREOS EN EL BUZON DE SALIDA</td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-
-</div>
->
+@endsection

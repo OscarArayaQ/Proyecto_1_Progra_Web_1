@@ -82,7 +82,8 @@ class Correo extends Controller
 
     public function get_correo_borrador()
     {
-        return CorreoModel::select_correos_borrador();
+        $correos= CorreoModel::select_correos_borrador();
+        return $correos; //view ("correo.bandeja_borrador",compact('correos'));
     }
 
     /**

@@ -23,6 +23,9 @@ class CorreoModel extends Model
     }
     public static function select_correos_borrador()
     {
-        return DB::table('correo')->where('borrador', '1')->get();
+        //return DB::table('correo')->where('borrador', '1')->get();
+        return  DB::table('correo')
+            ->join('destinatarios', 'destinatarios.id_correo', '=', 'correo.id')
+            ->select('destinatarios.correo_destinatario','correo.contenido','correo.asunto')->get();
     }
 }

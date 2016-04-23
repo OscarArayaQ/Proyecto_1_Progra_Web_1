@@ -11,7 +11,7 @@
         </div>
         <div class="minicontenedor">
             <div id="descripcion">
-                <h2> BANDEJA DE SALIDA </h2>
+                <h2> BANDEJA DE BORRADOR </h2>
                 <h4 id="mensaje" style="display: none;">Se guardó correctamente</h4>
                 <table id="tablaSalida">
                     <thead>
@@ -21,12 +21,13 @@
                     <tbody>
                     @forelse($correos as $correo)
                         <tr>
+                            <td>{{$correo->destinatario}}</td>
                             <td>{{$correo->asunto}}</td>
                             <td>{{$correo->contenido}}</td>
                         </tr>
                     @empty
                         <tr>
-                            <td>NO HAY CORREOS EN EL BUZON DE SALIDA</td>
+                            <td>NO HAY CORREOS EN EL BUZON DE BORRADOR</td>
                         </tr>
                     @endforelse
                     </tbody>
