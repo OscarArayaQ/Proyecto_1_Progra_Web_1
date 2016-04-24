@@ -4,9 +4,10 @@
     <div class="contenedor_general">
         <div class="opciones">
             <ul>
-                <li><a id="boton_especial" href="Bandeja de Salida.html"> SALIDA </a></li>
-                <li><a id="boton" href="Enviados.html"> ENVIADOS </a></li>
-                <li><a id="boton" href="Correo Nuevo.html" title="Nuevo Correo"> NUEVO </a></li>
+
+                <li><a id="boton" href="/correo/enviado"> ENVIADOS </a></li>
+                <li><a id="boton" href="/correo/create" title="Nuevo Correo"> NUEVO </a></li>
+                <li><a id="boton" href="/correo/borrador" title="Nuevo Correo"> BORRADOR </a></li>
             </ul>
         </div>
         <div class="minicontenedor">

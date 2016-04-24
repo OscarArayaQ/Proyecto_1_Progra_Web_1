@@ -16,16 +16,26 @@ class CorreoModel extends Model
         return DB::table('correo')->where('salida', '1')->get();
 
     }
+
     public static function select_correos_enviado()
     {
         return DB::table('correo')->where('enviado', '1')->get();
-
     }
+
     public static function select_correos_borrador()
     {
-        //return DB::table('correo')->where('borrador', '1')->get();
-        return  DB::table('correo')
+        $x = [];
+        $correos = DB::table('correo')
             ->join('destinatarios', 'destinatarios.id_correo', '=', 'correo.id')
-            ->select('destinatarios.correo_destinatario','correo.contenido','correo.asunto')->get();
+            ->select('destinatarios.correo_destinatario', 'destinatarios.id_correo'
+                , 'correo.contenido', 'correo.asunto')
+            ->where('correo.borrador', '=', '1')
+            ->get();
+
+        //foreach ($correos as $i) {
+        //    $x[$i->correo_destinatario] = $i->id_correo;
+        //}
+
+        return $correos;
     }
 }

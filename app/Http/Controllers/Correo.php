@@ -22,10 +22,6 @@ class Correo extends Controller
         $user = (object)array('name' => 'Oscar', 'email' => 'arayaos@icloud.com');
 
         Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-
-            //ocupo el id del usuario
-            //localhost:8000/user/verificar/id_usuario
-
             $m->to($user->email, $user->name)->subject('Activacion de la Cuenta');
         });
     }
@@ -77,13 +73,15 @@ class Correo extends Controller
 
     public function get_correo_enviado()
     {
-        return CorreoModel::select_correos_enviado();
+        $correos = CorreoModel::select_correos_enviado();
+        return view("correo.enviados", compact('correos'));
     }
 
     public function get_correo_borrador()
     {
-        $correos= CorreoModel::select_correos_borrador();
-        return $correos; //view ("correo.bandeja_borrador",compact('correos'));
+        $correos = CorreoModel::select_correos_borrador();
+        //array_keys($correos, 30);
+        return view("correo.bandeja_borrador", compact('correos'));
     }
 
     /**

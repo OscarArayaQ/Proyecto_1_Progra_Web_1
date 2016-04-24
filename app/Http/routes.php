@@ -22,7 +22,6 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get('prueba/correo', 'Prueba@sendEmailReminder');
 Route::get('correo/salida', 'Correo@get_correo_salida');
 Route::get('correo/borrador', 'Correo@get_correo_borrador');
 Route::get('correo/enviado', 'Correo@get_correo_enviado');

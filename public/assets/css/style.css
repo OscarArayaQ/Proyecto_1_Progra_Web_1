@@ -248,3 +248,8 @@ a {
         margin: 6% 14% 0% 12%;
     }
 }
+
+
+tbody{
+    text-align: left;
+}
